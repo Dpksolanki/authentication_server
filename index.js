@@ -17,12 +17,20 @@ app.use(
   })
 );
 
-app.use(express.json()); 
-app.use(cookieParser()); 
+app.use(express.json());
+app.use(cookieParser());
 
 connectToDatabase();
 
 app.use("/api/auth", authRoutes);
+
+// ✅ Health Check Route
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Server is healthy and running 🚀",
+  });
+});
 
 app.listen(7000, () => {
   console.log("Server is running on port 7000");
