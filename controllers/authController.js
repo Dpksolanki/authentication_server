@@ -78,9 +78,9 @@ export const login = async (req, res) => {
     }
 
     // Generate and set a JWT token in the response
-    generateJWTToken(res, user._id);
+    const token = generateJWTToken(res, user._id);
     // Respond with a success message
-    res.status(200).json({ success: true, message: 'Login successful' });
+    res.status(200).json({ token, success: true, message: 'Login successful' });
   } catch (error) {
     // Handle any errors that occur during the login process
     res.status(500).json({ success: false, message: error.message });
