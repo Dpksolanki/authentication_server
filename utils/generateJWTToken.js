@@ -14,7 +14,7 @@ export const generateJWTToken = (res, userId) => {
     // Set the token as a cookie in the response
     res.cookie('token', token, {
         httpOnly: true, // Prevent client-side access to the cookie
-        secure: process.env.NODE_ENV === 'local', 
+        secure: process.env.NODE_ENV === 'prod', 
         sameSite: 'strict', // Prevent CSRF attacks
         maxAge: 7 * 24 * 60 * 60 * 1000 // Cookie expiration time
     });
